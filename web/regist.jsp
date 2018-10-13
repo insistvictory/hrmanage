@@ -19,6 +19,7 @@
             background-attachment: fixed;
         }
     </style>
+
 </head>
 <body>
 <form  action="${pageContext.request.contextPath}/user/addUser" method="post">

@@ -9,14 +9,14 @@ public class Resume {
     private String name;
     private String gender;
     private int age;
-    private Education education;
+    private String  education;
     private String tel;
     private String email;
     private Job job;
     private String politicalStatus;
     private String lastJob;
     private String experience;
-    private Salary salaryHope;
+    private String salaryHope;
     private String hobby;
 
     public Resume() {
@@ -62,11 +62,11 @@ public class Resume {
         this.age = age;
     }
 
-    public Education getEducation() {
+    public String getEducation() {
         return education;
     }
 
-    public void setEducation(Education education) {
+    public void setEducation(String education) {
         this.education = education;
     }
 
@@ -118,11 +118,11 @@ public class Resume {
         this.experience = experience;
     }
 
-    public Salary getSalaryHope() {
+    public String getSalaryHope() {
         return salaryHope;
     }
 
-    public void setSalaryHope(Salary salaryHope) {
+    public void setSalaryHope(String salaryHope) {
         this.salaryHope = salaryHope;
     }
 
@@ -134,23 +134,5 @@ public class Resume {
         this.hobby = hobby;
     }
 
-    @Override
-    public String toString() {
-        return "Resume{" +
-                "id=" + id +
-                ", uid=" + uid +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
-                ", education=" + education +
-                ", tel='" + tel + '\'' +
-                ", email='" + email + '\'' +
-                ", job=" + job +
-                ", politicalStatus='" + politicalStatus + '\'' +
-                ", lastJob='" + lastJob + '\'' +
-                ", experience='" + experience + '\'' +
-                ", salaryHope=" + salaryHope +
-                ", hobby='" + hobby + '\'' +
-                '}';
-    }
+
 }

@@ -4,7 +4,7 @@
 	<!--<select id="queryUserByNameAndPassword" resultType="User2">
 		SELECT * from user where name=#{name} and password=#{password}
 	</select>-->
-	<select id="queryUserByNameAndPassword" resultType="Boolean">
+	<select id="queryUserByNameAndPassword" resultType="User">
 		SELECT * from user where name=#{name} and password=#{password}
 	</select>
 	<insert id="insertUser" parameterType="User">

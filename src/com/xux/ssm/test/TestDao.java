@@ -25,10 +25,9 @@ public class TestDao {
 	@Test
 	public void testInsertUser(){
 		User user=new User();
-		user.setName("bbb");
-		user.setPassword("bbb");
+		user.setName("ddd");
+		user.setPassword("ddd");
 		userDao.insertUser(user);
 
 	}
-
 }

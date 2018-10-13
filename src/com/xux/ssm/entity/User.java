@@ -7,7 +7,6 @@ public class User {
     private Integer id;
     private String name;
     private String password;
-    private Resume resume;
 
     public User() {
     }
@@ -36,21 +35,12 @@ public class User {
         this.password = password;
     }
 
-    public Resume getResume() {
-        return resume;
-    }
-
-    public void setResume(Resume resume) {
-        this.resume = resume;
-    }
-
     @Override
     public String toString() {
-        return "User{" +
+        return "User2{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", resume=" + resume +
                 '}';
     }
 }

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserDao userDao;
     @Override
-    public Boolean findUserByNameAndPassword(String name, String password) {
+    public User findUserByNameAndPassword(String name, String password) {
         return userDao.queryUserByNameAndPassword(name,password);
     }
 

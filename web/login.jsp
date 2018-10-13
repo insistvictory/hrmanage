@@ -20,17 +20,17 @@
         }
     </style>
     <script>
-        $(function(){
-            $("#name").blur(function(){
-                var name= $("#name").val();
-                if(name==""){
-                    alert("用户名不能为空")
+        $(function() {
+            $("#sub").click(function () {
+                var name = $("#name").val();
+                if (name == "") {
+                    alert("用户名不能为空");
+                    return false;
                 }
-            })
-            $("#password").blur(function(){
-                var password= $("#password").val();
-                if(password==""){
-                    alert("密码不能为空")
+                var password = $("#psd").val();
+                if (password == "") {
+                    alert("密码不能为空");
+                    return false;
                 }
             })
         })
@@ -40,8 +40,8 @@
     <form action="${pageContext.request.contextPath}/user/findUserByNameAndPassword" method="post">
         <h3>登录</h3>
         <input id="name" type="text" name="name"><br>
-        <input id="password" type="text" name="password"><br>
-        <input type="submit" value="登录"><br>
+        <input id="psd" type="text" name="password"><br>
+        <input id="sub" type="submit" value="登录"><br>
         <input type="button" value="取消"><br>
         <span style="color: red">快来加入我们吧</span><a href="regist.jsp"><span style="font-style:italic">注册</span></a>
     </form>
