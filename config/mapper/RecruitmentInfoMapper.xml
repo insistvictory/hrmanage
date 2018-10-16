@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.ssm.dao.RecruitmentInfoDao">
+
+	<select id="queryAllRecruitInfos" resultType="RecruitmentInfo">
+		select
+		 r.id,
+		 r.company,
+		 j.id "job.id",
+		 j.dept_id "job.deptId",
+		 j.name "job.name",
+		 j.create_time "job.createTime",
+		 r.address,
+		 r.salary,
+		 r.duty,
+		 r.requirements,
+		 r.pubdate
+		from
+			recruitinfo r,job j
+			where
+			r.job_id=j.id
+	</select>
+
+
+
+</mapper>
+
+
+
+
+
+
+		

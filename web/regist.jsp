@@ -64,9 +64,9 @@
 <body>
 <form  action="${pageContext.request.contextPath}/user/addUser" method="post">
     <h3>注册</h3>
-    <input id="lname" type="text" name="name"><span id="spn1"></span><br>
-    <input id="psd1" type="text" name="password"><span id="spn"></span><br>
-    <input id="psd2" type="text" name="password2"><span id="sp"></span><br>
+    用户名:<input id="lname" type="text" name="name"><span id="spn1"></span><br>
+    密码：<input id="psd1" type="text" name="password"><span id="spn"></span><br>
+    密码确认:<input id="psd2" type="text" name="password2"><span id="sp"></span><br>
     <input id="sub" type="submit" value="注册"><br>
    <%-- <input type="button" value="取消"><br>--%>
 </form>

@@ -17,6 +17,13 @@ import java.util.List;
 public class AdminHandler {
     @Autowired
     private AdminService adminService;
+
+    /**
+     * 查看投递者详细信息
+     * @param did
+     * @param model
+     * @return
+     */
     @RequestMapping("searchDelivererDetailByDid")
     public String searchEmployeeDetailByEdid(Integer did,Model model) {
         Resume resume=adminService.searchDelivererDetailByDid(did);

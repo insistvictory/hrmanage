@@ -13,7 +13,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script type="text/javascript">
         $(function () {
-            $("#sub").attr("disabled",true)
             $("#original").blur(function () {
                 $("#spn1").empty()
                 var url="${pageContext.request.contextPath}/user/validatePassword";
@@ -27,28 +26,33 @@
             $("#newpsd").blur(function () {
                 $("#spn3").empty();
                 if($(this).val()=="") {
-                    $("#spn3").text("密码不能为空");
+                    $("#spn3").text("新密码不能为空");
+                }else{
+                    $("#spn2").empty();
                 }
             })
             $("#checkpsd").blur(function () {
                 $("#spn2").empty()
                 if($(this).val()!=$("#newpsd").val()){
                     $("#spn2").text("两次密码不匹配")
-                    $("#sub").attr("disabled",true)
-                }else {
-                    $("#sub").attr("disabled",false)
                 }
             })
-           /* $("#sub").click(function () {
-                if($("newpsd").val()==""){
-                    $("#spn3").text("新密码不能为空");
-                    return false;
-                }
-                if($("original").val()==""){
+            $("#sub").click(function () {
+                if($("#original").val()==""){
                     $("#spn1").text("原始密码不能为空");
                     return false;
                 }
-            })*/
+                if($("#newpsd").val()==""){
+                    $("#spn3").text("新密码不能为空");
+                    return false;
+                }
+                if ($("#spn2").text()=="两次密码不匹配"){
+                    return false;
+                }
+                if ($("#spn1").text()=="密码错误"){
+                    return false;
+                }
+            })
         })
 
     </script>

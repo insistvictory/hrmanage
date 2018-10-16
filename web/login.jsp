@@ -37,13 +37,16 @@
     </script>
 </head>
 <body>
+<div align="center"style="margin-top:100px">
     <form action="${pageContext.request.contextPath}/user/findUserByNameAndPassword" method="post">
-        <h3>登录</h3>
-        <input id="name" type="text" name="name"><br>
-        <input id="psd" type="text" name="password"><br>
-        <input id="sub" type="submit" value="登录"><br>
-        <input type="button" value="取消"><br>
-        <span style="color: red">快来加入我们吧</span><a href="regist.jsp"><span style="font-style:italic">注册</span></a>
+        <h1>登录</h1>
+        <input id="name" type="text" name="name" placeholder="用户名"><br><br><br>
+
+        <input id="psd" type="text" name="password" placeholder="密码"><br><br><br>
+        <input id="sub" type="submit" value="登录"><br><br><br>
+
+        <span style="color: red ">快来加入我们吧</span><a href="regist.jsp"><span style="font-style:italic">注册</span></a>
     </form>
+</div>
 </body>
 </html>

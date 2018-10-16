@@ -31,6 +31,8 @@ public class TestDao {
 	private JobDao jobDao;
 	@Autowired
 	private EmployeeDao employeeDao;
+	@Autowired
+	private RecruitmentInfoDao recruitmentInfoDao;
 	@Test
 	public void testUserDao(){
 		System.out.println(userDao.queryUserByNameAndPassword("aaa","aaa"));
@@ -137,5 +139,13 @@ public class TestDao {
 	@Test
 	public void testUpdateUserPassword(){
 		userDao.updatePassword(1,"abc");
+	}
+
+	/**
+	 * 查询所有招聘信息
+	 */
+	@Test
+	public void testQueryRecruits(){
+		System.out.println(recruitmentInfoDao.queryAllRecruitInfos());
 	}
 }

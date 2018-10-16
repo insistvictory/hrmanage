@@ -1,14 +1,8 @@
 package com.xux.ssm.handler;
 
 import com.alibaba.fastjson.JSONArray;
-import com.xux.ssm.entity.Dept;
-import com.xux.ssm.entity.Job;
-import com.xux.ssm.entity.Resume;
-import com.xux.ssm.entity.User;
-import com.xux.ssm.service.DeptService;
-import com.xux.ssm.service.JobService;
-import com.xux.ssm.service.ResumeService;
-import com.xux.ssm.service.UserService;
+import com.xux.ssm.entity.*;
+import com.xux.ssm.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -35,16 +29,33 @@ public class UserHandler {
     private DeptService deptService;
     @Autowired
     private JobService jobService;
+    @Autowired
+    private RecruitmentInfoService recruitmentInfoService;
+    /**
+     登录验证通过用户名和密码查找User
+     * @param name
+     * @param password
+     * @param session
+     * @return
+     */
     @RequestMapping("findUserByNameAndPassword")
     public String findUserByNameAndPassword(String name, String password, HttpSession session){
         User user=userService.findUserByNameAndPassword(name,password);
+        List<RecruitmentInfo> recruitInfos=recruitmentInfoService.findAllRecruitInfos();
         if (user!=null){
+            session.setAttribute("recruitInfos",recruitInfos);
             session.setAttribute("user",user);
-            return "show";
+            return "user/show";
         }else {
             return "redirect:/login.jsp";
         }
     }
+
+    /**
+     * 保存简历（添加，修改）
+     * @param resume
+     * @return
+     */
     @RequestMapping("saveResume")
     public String saveResume(Resume resume){
         Resume rsme=resumeService.findResumeByUid(resume.getUid());
@@ -55,8 +66,13 @@ public class UserHandler {
             resumeService.updateResume(resume);
             return "show";
         }
-
     }
+
+    /**
+     * 根据部门名字查找该部门所有的职位
+     * @param dName
+     * @return
+     */
     @RequestMapping( value = "findRelatedJobs" ,produces = {"text/html;charset=utf-8"})
     @ResponseBody
     public String findRelatedJobs(String dName){
@@ -67,11 +83,22 @@ public class UserHandler {
         return jsonJobs;
     }
 
+    /**
+     * 注册添加用户
+     * @param user
+     * @return
+     */
     @RequestMapping("addUser")
     public String addUser(User user){
         userService.addUser(user);
         return "redirect:/login.jsp";
     }
+
+    /**
+     * 验证用户名
+     * @param name
+     * @return
+     */
     @RequestMapping("validateName")
     @ResponseBody
     public String validateName(String name){
@@ -84,6 +111,12 @@ public class UserHandler {
         }
         return msg;
     }
+
+    /**
+     * 验证密码
+     * @param password
+     * @return
+     */
     @RequestMapping("validatePassword")
     @ResponseBody
     public String validatePassword(String password){
@@ -94,13 +127,27 @@ public class UserHandler {
         }
         return msg;
     }
+
+    /**
+     * 修改密码
+     * @param id
+     * @param newPassword
+     * @return
+     */
     @RequestMapping("updatePassword")
     public String updatePassword(Integer id,String newPassword){
         userService.updatePassword(id,newPassword);
-        return "show";
+        return "user/show";
 
     }
 
+    /**
+     * 查看简历（返回）
+     * @param flag
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("lookResume")
     public String lookResume(String flag,Integer id,Model model){
         Resume resume=resumeService.findResumeByUid(id);
