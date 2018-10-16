@@ -1,14 +1,15 @@
 package com.xux.ssm.entity;
 
-import javafx.scene.DepthTest;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2018/10/12.
  */
 public class Job {
     private Integer id;
-    private Post post;
-    private Dept dept;
+    private Integer deptId;
+    private String name;
+    private Date createTime;
 
     public Job() {
     }
@@ -21,28 +22,38 @@ public class Job {
         this.id = id;
     }
 
-    public Post getPost() {
-        return post;
+    public Integer getDeptId() {
+        return deptId;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
     }
 
-    public Dept getDept() {
-        return dept;
+
+    public String getName() {
+        return name;
     }
 
-    public void setDept(Dept dept) {
-        this.dept = dept;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     @Override
     public String toString() {
         return "Job{" +
                 "id=" + id +
-                ", post=" + post +
-                ", dept=" + dept +
+                ", deptId=" + deptId +
+                ", name='" + name + '\'' +
+                ", createTime=" + createTime +
                 '}';
     }
 }

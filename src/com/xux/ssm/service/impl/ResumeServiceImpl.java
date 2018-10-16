@@ -14,7 +14,17 @@ public class ResumeServiceImpl implements ResumeService {
     @Autowired
     private ResumeDao resumeDao;
     @Override
-    public Resume findResumeByUid() {
-        return resumeDao.queryResumeByUid();
+    public Resume findResumeByUid(Integer id) {
+        return resumeDao.queryResumeByUid(id);
+    }
+
+    @Override
+    public void saveResume(Resume resume) {
+        resumeDao.addResume(resume);
+    }
+
+    @Override
+    public void updateResume(Resume resume) {
+        resumeDao.updateResume(resume);
     }
 }

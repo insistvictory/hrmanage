@@ -19,16 +19,56 @@
             background-attachment: fixed;
         }
     </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#lname").blur(function () {
+                if ($(this).val()==""){
+                    $("#spn1").text("用户名不能为空")
+                    $("#sub").attr("disabled",true);
+                }else {
+                    var url="${pageContext.request.contextPath}/user/validateName";
+                    var ags={name:$(this).val()};
+                    $.post(url,ags,function (data) {
+                        if (data=="ok"){
+                            $("#spn1").text("用户名可用")
+                            $("#sub").attr("disabled",false)
+                        }else {
+                            $("#spn1").text("用户名已存在")
+                            $("#sub").attr("disabled",true);
+                        }
+                    })
+                }
+            })
+            $("#psd1").blur(function () {
+                if($(this).val()=="") {
+                    $("#spn").text("密码不能为空");
+                    $("#sub").attr("disabled", true);
+                }else {
+                    $("#spn").empty();
+                    $("#sub").attr("disabled", false);
+                }
+            })
+            $("#psd2").blur(function () {
+                if($(this).val()!=$("#psd1").val()){
+                    $("#sp").text("密码不匹配");
+                    $("#sub").attr("disabled",true);
+                }else {
+                    $("#sp").empty();
+                    $("#sub").attr("disabled",false);
+                }
+            })
+        })
+    </script>
 
 </head>
 <body>
 <form  action="${pageContext.request.contextPath}/user/addUser" method="post">
     <h3>注册</h3>
-    <input type="text" name="name"><br>
-    <input type="text" name="password"><br>
-    <input type="text" name="password2"><br>
-    <input type="submit" value="注册"><br>
-    <input type="button" value="取消"><br>
+    <input id="lname" type="text" name="name"><span id="spn1"></span><br>
+    <input id="psd1" type="text" name="password"><span id="spn"></span><br>
+    <input id="psd2" type="text" name="password2"><span id="sp"></span><br>
+    <input id="sub" type="submit" value="注册"><br>
+   <%-- <input type="button" value="取消"><br>--%>
 </form>
 </body>
 </html>

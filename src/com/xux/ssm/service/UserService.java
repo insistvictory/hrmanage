@@ -9,5 +9,13 @@ public interface UserService {
     public User findUserByNameAndPassword(String name, String password);
 
     void addUser(User user);
+
+    User validate(String name);
+
+    User findUserByUid(Integer uid);
+
+    User validatePassword(String password);
+
+    void updatePassword(Integer id,String newPassword);
 }
 

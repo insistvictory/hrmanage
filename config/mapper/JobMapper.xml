@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.ssm.dao.JobDao">
+
+	<select id="queryAllJobs" resultType="Job">
+		SELECT * from job;
+	</select>
+	<insert id="addJob" parameterType="Job">
+		insert into job(dept_id,name,create_time) values(#{deptId},#{name},#{createTime});
+	</insert>
+	<delete id="deleteJobById" parameterType="int">
+		delete from job where id=#{id};
+	</delete>
+	<update id="updateJob" parameterType="Job">
+		update job set dept_id=#{deptId},name=#{name},create_time=#{createTime} where id=#{id}
+	</update>
+
+	<select id="queryJobsByDeptId" resultType="Job">
+		select * from job where dept_id=#{deptId}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+		

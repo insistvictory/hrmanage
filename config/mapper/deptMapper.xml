@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.ssm.dao.DeptDao">
+
+	<select id="queryAllDepts" resultType="Dept">
+		SELECT * from dept;
+	</select>
+	<select id="queryDeptByName" resultType="Dept">
+		SELECT * from dept where name=#{name};
+	</select>
+	<insert id="addDept" parameterType="Dept">
+		insert into dept(name,create_time) values(#{name},#{createTime});
+	</insert>
+	<delete id="deleteDeptById" parameterType="int">
+		delete from dept where id=#{id};
+	</delete>
+	<update id="updateDept" parameterType="Dept">
+		update dept set name=#{name},create_time=#{createTime} where id=#{id}
+	</update>
+
+</mapper>
+
+
+
+
+
+
+		

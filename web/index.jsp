@@ -12,5 +12,6 @@
   </head>
   <body>
   $END$
+  <a href="admin/searchDelivererDetailByDid?did=1">eeeee</a>
   </body>
 </html>

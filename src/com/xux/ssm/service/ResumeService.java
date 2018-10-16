@@ -7,5 +7,9 @@ import com.xux.ssm.entity.Resume;
  */
 public interface ResumeService {
 
-    Resume findResumeByUid();
+    Resume findResumeByUid(Integer id);
+
+    void saveResume(Resume resume);
+
+    void updateResume(Resume resume);
 }

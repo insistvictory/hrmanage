@@ -7,9 +7,21 @@
 	<select id="queryUserByNameAndPassword" resultType="User">
 		SELECT * from user where name=#{name} and password=#{password}
 	</select>
+	<select id="queryUserByUid" resultType="User">
+		SELECT * from user where id=#{id}
+	</select>
+	<select id="queryByName" resultType="User">
+		SELECT *from user where name=#{name}
+	</select>
+	<select id="queryUserByPassword" resultType="User">
+		SELECT *from user where password=#{password}
+	</select>
 	<insert id="insertUser" parameterType="User">
 		insert into user(name,password) values(#{name},#{password})
 	</insert>
+	<update id="updatePassword">
+		update user set password=#{newPassword} where id=#{id}
+	</update>
 </mapper>
 
 

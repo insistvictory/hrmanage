@@ -1,12 +1,14 @@
 package com.xux.ssm.entity;
 
+import java.util.Date;
+
 /**
- * Created by Administrator on 2018/10/12.
+ * Created by Administrator on 2018/10/14.
  */
-public class Resume {
+public class Employee {
     private Integer id;
-    private Integer uid;
     private String name;
+    private String password;
     private String gender;
     private int age;
     private String  education;
@@ -15,29 +17,10 @@ public class Resume {
     private String dept;
     private String job;
     private String politicalStatus;
-    private String lastJob;
-    private String experience;
-    private String salaryHope;
+    private Date entryTime;
     private String hobby;
 
-    public Resume() {
-    }
-
-    public Resume(Integer uid, String name, String gender, int age, String education, String tel, String email, String dept, String job, String politicalStatus, String lastJob, String experience, String salaryHope, String hobby) {
-        this.uid = uid;
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
-        this.education = education;
-        this.tel = tel;
-        this.email = email;
-        this.dept = dept;
-        this.job = job;
-        this.politicalStatus = politicalStatus;
-        this.lastJob = lastJob;
-        this.experience = experience;
-        this.salaryHope = salaryHope;
-        this.hobby = hobby;
+    public Employee() {
     }
 
     public Integer getId() {
@@ -48,20 +31,20 @@ public class Resume {
         this.id = id;
     }
 
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getGender() {
@@ -128,28 +111,12 @@ public class Resume {
         this.politicalStatus = politicalStatus;
     }
 
-    public String getLastJob() {
-        return lastJob;
+    public Date getEntryTime() {
+        return entryTime;
     }
 
-    public void setLastJob(String lastJob) {
-        this.lastJob = lastJob;
-    }
-
-    public String getExperience() {
-        return experience;
-    }
-
-    public void setExperience(String experience) {
-        this.experience = experience;
-    }
-
-    public String getSalaryHope() {
-        return salaryHope;
-    }
-
-    public void setSalaryHope(String salaryHope) {
-        this.salaryHope = salaryHope;
+    public void setEntryTime(Date entryTime) {
+        this.entryTime = entryTime;
     }
 
     public String getHobby() {
@@ -160,13 +127,12 @@ public class Resume {
         this.hobby = hobby;
     }
 
-
     @Override
     public String toString() {
-        return "Resume{" +
+        return "Employee{" +
                 "id=" + id +
-                ", uid=" + uid +
                 ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
                 ", education='" + education + '\'' +
@@ -175,9 +141,7 @@ public class Resume {
                 ", dept='" + dept + '\'' +
                 ", job='" + job + '\'' +
                 ", politicalStatus='" + politicalStatus + '\'' +
-                ", lastJob='" + lastJob + '\'' +
-                ", experience='" + experience + '\'' +
-                ", salaryHope='" + salaryHope + '\'' +
+                ", entryTime=" + entryTime +
                 ", hobby='" + hobby + '\'' +
                 '}';
     }

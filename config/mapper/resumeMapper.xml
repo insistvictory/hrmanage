@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.ssm.dao.ResumeDao">
+
+	<select id="queryResumeByUid" resultType="Resume">
+		SELECT *from resume  where uid=#{uid};
+	</select>
+	<select id="queryResumeById" resultType="Resume">
+		SELECT *from resume  where uid=#{uid};
+	</select>
+	<insert id="addResume" parameterType="Resume">
+		insert into resume (uid,name,gender,age,education,tel,email,dept,job,political_status,last_job,experience,salary_hope,hobby)
+		values(#{uid},#{name},#{gender},#{age},#{education},#{tel},#{email},#{dept},#{job},#{politicalStatus},#{lastJob},#{experience},#{salaryHope},#{hobby})
+	</insert>
+	<update id="updateResume" parameterType="Resume">
+		update resume set uid=#{uid},name=#{name},gender=#{gender},age=#{age},education=#{education},tel=#{tel},email=#{email},dept=#{dept},job=#{job},
+		political_status=#{politicalStatus},last_job=#{lastJob},experience=#{experience},salary_hope=#{salaryHope},hobby=#{hobby}
+		where uid=#{uid}
+	</update>
+
+</mapper>
+
+
+
+
+
+
+		
