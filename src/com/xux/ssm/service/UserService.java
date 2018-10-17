@@ -1,5 +1,6 @@
 package com.xux.ssm.service;
 
+import com.xux.ssm.entity.Application;
 import com.xux.ssm.entity.User;
 
 /**
@@ -47,5 +48,8 @@ public interface UserService {
      * @param newPassword
      */
     void updatePassword(Integer id,String newPassword);
+
+
+    Application findApplyByResumeId(Integer resumeId);
 }
 

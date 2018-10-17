@@ -4,8 +4,23 @@
     <select id="queryAllApplications" resultType="Application">
         select *from application ;
     </select>
+    <select id="queryApplicationByResumeId" resultType="Application">
+        select *from application where resume_id=#{resumeId};
+    </select>
 
+    <select id="queryApplicationById" resultType="Application">
+        select *from application where id=#{apid};
+    </select>
 
+    <insert id="addApplication" parameterType="Application">
+        insert into application(resume_id,apply_time,resume_status,interview_status) values(#{resumeId},#{applyTime},#{resumeStatus},#{interviewStatus})
+    </insert>
+    <update id="updateApplication">
+        update application set resume_id=#{resumeId},apply_time=#{applyTime},resume_status=#{resumeStatus},interview_status=#{interviewStatus} where id=#{id};
+    </update>
+    <delete id="deleteApplicationById">
+        delete from application where id=#{id};
+    </delete>
 </mapper>
 
 

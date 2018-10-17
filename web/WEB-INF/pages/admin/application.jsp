@@ -13,6 +13,27 @@
     <base href="${pageContext.request.contextPath}/">
     <title>应聘消息</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            $(".del").click(function () {
+                var $a = $(this);
+                var $td = $(this).parent().parent().children();
+                var id=$td[0].innerHTML;
+                var url = "${pageContext.request.contextPath}/admin/deleteApplicationById";
+                var args = {"id":id};
+                var flag=confirm("你确定要删除"+id+"号应聘者的信息吗？")
+                if(flag){
+                    $.post(url, args, function (data) {
+                        if (data =="ok") {
+                            $a.parent().parent().remove();
+                        }
+                    })
+                }else {
+                    return false;
+                }
+            })
+        })
+    </script>
 </head>
 <body>
     <div>
@@ -29,9 +50,9 @@
                         <td>${application.id}</td>
                         <td><f:formatDate value="${application.applyTime}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
                         <td>${application.resumeStatus}</td>
-                        <td>面试状态</td>
-                        <td><a href="admin/searchDelivererDetail?id=${application.resumeId}">查看</a></td>
-                        <td><a href="">删除</a></td>
+                        <td>${application.interviewStatus}</td>
+                        <td><a href="admin/searchDelivererDetail?id=${application.resumeId}&apid=${application.id}">查看</a></td>
+                        <td><a href="#" class="del">删除</a></td>
                     </tr>
                 </c:forEach>
         </table>

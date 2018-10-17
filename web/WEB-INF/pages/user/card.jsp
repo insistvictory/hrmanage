@@ -35,6 +35,22 @@
                     return false;
                 }
             })
+            $("#href").click(function () {
+                if(${empty requestScope.resume}) {
+                    alert("请先创建简历");
+                }else {
+                    var url="${pageContext.request.contextPath}/user/deliver";
+                    var ags={resumeId:${requestScope.resume.id}};
+                    $.post(url,ags,function (data) {
+                        if (data=="yes"){
+                            alert("投递成功");
+                        }else {
+                            alert("不可重复投递")
+                        }
+                    })
+                }
+                return false;
+            })
         })
     </script>
 
@@ -136,6 +152,7 @@
         </tr>
     </table>
 </form>
+<a id="href" href="#">提交</a>
 
 </body>
 </html>

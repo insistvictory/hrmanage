@@ -26,7 +26,7 @@
         </tr>
         <c:forEach items="${requestScope.recruitInfos}" var="recruitInfo">
             <tr>
-                <td><a href="${pageContext.request.contextPath}/user/findRecruitInfo?id=${recruitInfo.id}">☆☆</a></td>
+                <td><a href="${pageContext.request.contextPath}/user/findRecruitInfo?id=${recruitInfo.rid}">☆☆</a></td>
                 <td>${recruitInfo.company}</td>
                 <td>${recruitInfo.job.name}</td>
                 <td>${recruitInfo.address}</td>

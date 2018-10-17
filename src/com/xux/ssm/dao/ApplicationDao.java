@@ -1,6 +1,9 @@
 package com.xux.ssm.dao;
 
-import javafx.application.Application;
+
+
+import com.xux.ssm.entity.Application;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,4 +12,15 @@ import java.util.List;
  */
 public interface ApplicationDao {
     List<Application> queryAllApplications();
+
+    void addApplication(Application application);
+
+    Application queryApplicationByResumeId(Integer id);
+
+    Application queryApplicationById(Integer apid);
+
+    void updateApplication(Application application);
+
+    void deleteApplicationById(Integer id);
 }
+

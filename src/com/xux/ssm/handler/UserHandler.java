@@ -9,9 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.print.SunPrinterJobService;
+
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 
@@ -31,6 +32,10 @@ public class UserHandler {
     private JobService jobService;
     @Autowired
     private RecruitmentInfoService recruitmentInfoService;
+    @Autowired
+    private ApplicationService applicationService;
+    @Autowired
+    private InterviewService interviewService;
     /**
      登录验证通过用户名和密码查找User
      * @param name
@@ -42,6 +47,7 @@ public class UserHandler {
     public String findUserByNameAndPassword(String name, String password, HttpSession session){
         User user=userService.findUserByNameAndPassword(name,password);
         if (user!=null){
+            Interview interview=interviewService.findInterviewByUid(user.getId());
             session.setAttribute("user",user);
             return "user/show";
         }else {
@@ -59,10 +65,10 @@ public class UserHandler {
         Resume rsme=resumeService.findResumeByUid(resume.getUid());
         if (rsme==null){
             resumeService.saveResume(resume);
-            return "show";
+            return "user/show";
         }else {
             resumeService.updateResume(resume);
-            return "show";
+            return "user/show";
         }
     }
 
@@ -155,9 +161,9 @@ public class UserHandler {
             model.addAttribute("resume",resume);
             model.addAttribute("depts",depts);
             model.addAttribute("jobs",jobs);
-            return "card";
+            return "user/card";
         }else {
-            return "show";
+            return "user/show";
         }
     }
 
@@ -171,6 +177,7 @@ public class UserHandler {
     public String lookAtRecruitInfo(Integer id,Model model,HttpSession session){
         List<RecruitmentInfo> recruitInfos=recruitmentInfoService.findAllRecruitInfos();
         Resume resume=resumeService.findResumeByUid(id);
+        System.out.println(resume);
         model.addAttribute("recruitInfos",recruitInfos);
         session.setAttribute("resume",resume);
         return "user/recruit";
@@ -184,13 +191,23 @@ public class UserHandler {
     @RequestMapping("findRecruitInfo")
     public String findRecruitInfo(Integer id,Model model){
         RecruitmentInfo recruitInfo=recruitmentInfoService.findRecruitInfoById(id);
-        model.addAttribute(recruitInfo);
+        model.addAttribute("recruitInfo",recruitInfo);
         return "user/recruitinfo";
     }
 
     @RequestMapping("deliver")
-    public String deliver(){
-        return null;
-        //ToDo
+    @ResponseBody
+    public String deliver(Application application){
+        System.out.println(application.getResumeId());
+        Application app=userService.findApplyByResumeId(application.getResumeId());
+        if (app!=null){
+            return "no";
+        }else {
+            application.setApplyTime(new Date());
+            application.setResumeStatus("未查看");
+            application.setInterviewStatus("未面试");
+            applicationService.addApplication(application);
+            return "yes";
+        }
     }
 }

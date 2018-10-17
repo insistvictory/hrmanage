@@ -4,7 +4,7 @@
 
 	<select id="queryAllRecruitInfos" resultType="RecruitmentInfo">
 		select
-		 r.id,
+		 r.rid,
 		 r.company,
 		 j.id "job.id",
 		 j.dept_id "job.deptId",
@@ -23,7 +23,7 @@
 
 	<select id="queryRecruitInfoById" resultType="RecruitmentInfo">
 		select
-		 r.id,
+		 r.rid,
 		 r.company,
 		 j.id "job.id",
 		 j.dept_id "job.deptId",
@@ -37,10 +37,9 @@
 		from
 			recruitinfo r,job j
 			where
-			r.job_id=j.id and r.id=#{id};
+			r.job_id=j.id and r.rid=#{id};
 
 	</select>
-
 
 </mapper>
 

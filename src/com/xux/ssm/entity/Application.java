@@ -7,13 +7,19 @@ import java.util.Date;
  */
 public class Application {
     private Integer id;
-    private Integer recruitId;
     private Integer resumeId;
     private Date applyTime;
     private String resumeStatus;
+    private String InterviewStatus;
 
 
     public Application() {
+    }
+
+    public Application(Integer resumeId, Date applyTime, String resumeStatus) {
+        this.resumeId = resumeId;
+        this.applyTime = applyTime;
+        this.resumeStatus = resumeStatus;
     }
 
     public Integer getId() {
@@ -22,14 +28,6 @@ public class Application {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getRecruitId() {
-        return recruitId;
-    }
-
-    public void setRecruitId(Integer recruitId) {
-        this.recruitId = recruitId;
     }
 
     public Integer getResumeId() {
@@ -56,14 +54,22 @@ public class Application {
         this.resumeStatus = resumeStatus;
     }
 
+    public String getInterviewStatus() {
+        return InterviewStatus;
+    }
+
+    public void setInterviewStatus(String interviewStatus) {
+        InterviewStatus = interviewStatus;
+    }
+
     @Override
     public String toString() {
         return "Application{" +
                 "id=" + id +
-                ", recruitId=" + recruitId +
                 ", resumeId=" + resumeId +
                 ", applyTime=" + applyTime +
                 ", resumeStatus='" + resumeStatus + '\'' +
+                ", InterviewStatus='" + InterviewStatus + '\'' +
                 '}';
     }
 }

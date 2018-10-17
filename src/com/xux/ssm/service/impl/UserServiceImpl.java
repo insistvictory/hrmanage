@@ -1,6 +1,8 @@
 package com.xux.ssm.service.impl;
 
+import com.xux.ssm.dao.ApplicationDao;
 import com.xux.ssm.dao.UserDao;
+import com.xux.ssm.entity.Application;
 import com.xux.ssm.entity.User;
 import com.xux.ssm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private ApplicationDao applicationDao;
     @Override
     public User findUserByNameAndPassword(String name, String password) {
         return userDao.queryUserByNameAndPassword(name,password);
@@ -41,5 +45,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public void updatePassword(Integer id, String newPassword) {
         userDao.updatePassword(id,newPassword);
+    }
+
+    @Override
+    public Application findApplyByResumeId(Integer resumeId) {
+        return applicationDao.queryApplicationByResumeId(resumeId);
     }
 }

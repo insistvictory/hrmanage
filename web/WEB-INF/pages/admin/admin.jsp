@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-
+    <base href="${pageContext.request.contextPath}/">
     <title>管理员功能界面</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
 
@@ -17,6 +17,7 @@
 <body>
 
         <a href="admin/lookApplications">招聘管理</a>
+        <a href="admin/lookDepts">部门管理</a>
     部门管理
     职位管理
     员工管理

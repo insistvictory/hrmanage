@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.ssm.dao.InterviewDao">
+	<insert id="addInterview">
+		insert into interview(apply_id,dmanager,interview_time,hire) values (#{applyId},#{dmanager},#{interviewTime},#{hire});
+	</insert>
+	<select id="queryInterviewByApplyId">
+		select *from interview where id=#{id};
+	</select>
+</mapper>
+
+
+
+
+
+
+		

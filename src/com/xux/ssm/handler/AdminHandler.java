@@ -1,13 +1,13 @@
 package com.xux.ssm.handler;
 
-import com.xux.ssm.entity.Resume;
+import com.xux.ssm.entity.*;
 import com.xux.ssm.service.AdminService;
 import com.xux.ssm.service.ApplicationService;
-import javafx.application.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,17 +23,38 @@ public class AdminHandler {
     @Autowired
     private ApplicationService applicationService;
 
-
+    /**
+     * 管理员登录
+     * @param name
+     * @param password
+     * @param session
+     * @return
+     */
+    @RequestMapping("findAdminByNameAndPassword")
+    public String findAdminByNameAndPassword(String name, String password, HttpSession session){
+        Admin admin=adminService.findAdminByNameAndPassword(name,password);
+        if (admin!=null){
+            session.setAttribute("admin",admin);
+            return "admin/admin";
+        }else {
+            return "redirect:/adminlogin.jsp";
+        }
+    }
     /**
      * 查看投递者详细信息
      * @param id
-     * @param model
+     * @param session
      * @return
      */
     @RequestMapping("searchDelivererDetail")
-    public String searchEmployeeDetailByResumeId(Integer id,Model model) {
+    public String searchEmployeeDetailByResumeId(Integer id,Integer apid,HttpSession session) {
         Resume resume=adminService.searchDelivererDetailByDid(id);
-        model.addAttribute("resume",resume);
+        Application application=applicationService.findApplicationById(apid);
+        application.setResumeStatus("已查看");
+        System.out.println(application);
+        applicationService.updateApplication(application);
+        session.setAttribute("resume",resume);
+        session.setAttribute("apid",apid);
         return "admin/applydetail";
     }
 
@@ -48,9 +69,39 @@ public class AdminHandler {
         session.setAttribute("applications",applications);
         return "admin/application";
     }
-    @RequestMapping("sendInterview")
-    public String sendInterview(){
 
+    /**
+     * 添加面试邀请
+     * @return
+     */
+    @RequestMapping("interviewAdd")
+    public String interviewAdd(Interview interview,String dept){
+        System.out.println(interview);
+        interview.setHire("未录用");
+
+        adminService.addInterview(interview);
         return null;
     }
+    @RequestMapping("middle")
+    public String middle(){
+        return "admin/admin";
+    }
+    @RequestMapping("lookDepts")
+    public String lookDepts(Model model){
+        List<Dept> depts= adminService.lookDepts();
+        model.addAttribute("depts",depts);
+        return "admin/dept";
+    }
+    @RequestMapping("deleteDeptByName")
+    public String deleteDeptByName(){
+        return null;
+    //TODO
+    }
+    @RequestMapping("deleteApplicationById")
+    @ResponseBody
+    public String deleteApplicationById(Integer id){
+        applicationService.deleteApplicationById(id);
+        return "ok";
+    }
+
 }

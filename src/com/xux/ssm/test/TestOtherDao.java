@@ -16,12 +16,35 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 //引入Spring的配置文件
 @ContextConfiguration({"classpath:spring.xml"})
-public class TestApplicationDao {
+public class TestOtherDao {
   	@Autowired
 	private ApplicationDao applicationDao;
+  	@Autowired
+	private InterviewDao interviewDao;
   	@Test
 	public void testQueryAllApplications(){
 		System.out.println(applicationDao.queryAllApplications());
 	}
+	@Test
+	public void TestQueryApplicationByResumeId(){
+		System.out.println(applicationDao.queryApplicationByResumeId(1));
+	}
+	@Test
+	public void TestQueryApplicationById(){
+		System.out.println(applicationDao.queryApplicationById(8));
+	}
+	@Test
+	public void testAddApplication(){
+		Application application=new Application(2,new Date(),"未查看");
+		applicationDao.addApplication(application);
+	}
+	@Test
+	public void testDeleteApplicationById(){
+		applicationDao.deleteApplicationById(11);
 
+	}
+	@Test
+	public void testQueryInterviewByApplyId(){
+		System.out.println(interviewDao.queryInterviewByApplyId(1));
+	}
 }
