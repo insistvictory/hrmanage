@@ -20,4 +20,9 @@ public class RecruitmentInfoServiceImpl implements RecruitmentInfoService{
     public List<RecruitmentInfo> findAllRecruitInfos() {
         return recruitmentInfoDao.queryAllRecruitInfos();
     }
+
+    @Override
+    public RecruitmentInfo findRecruitInfoById(Integer id) {
+        return recruitmentInfoDao.queryRecruitInfoById(id);
+    }
 }

@@ -21,6 +21,25 @@
 			r.job_id=j.id
 	</select>
 
+	<select id="queryRecruitInfoById" resultType="RecruitmentInfo">
+		select
+		 r.id,
+		 r.company,
+		 j.id "job.id",
+		 j.dept_id "job.deptId",
+		 j.name "job.name",
+		 j.create_time "job.createTime",
+		 r.address,
+		 r.salary,
+		 r.duty,
+		 r.requirements,
+		 r.pubdate
+		from
+			recruitinfo r,job j
+			where
+			r.job_id=j.id and r.id=#{id};
+
+	</select>
 
 
 </mapper>

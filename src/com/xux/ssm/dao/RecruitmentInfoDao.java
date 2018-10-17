@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface RecruitmentInfoDao {
     List<RecruitmentInfo> queryAllRecruitInfos();
+
+    RecruitmentInfo queryRecruitInfoById(Integer id);
 }

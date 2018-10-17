@@ -9,9 +9,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>临时查看投递者简历信息</title>
+    <title>查看投递者简历详情</title>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $()
+        })
+    </script>
 </head>
 <body>
+<form>
 <table border="1" cellpadding="5px" cellspacing="0">
     <tr>
         <td colspan="4" align="center">简历</td>
@@ -65,11 +72,11 @@
         <td><input type="text" name="hobby" value="${requestScope.resume.hobby}"></td>
     </tr>
     <tr>
-        <td colspan="2" align="center">面试</td>
-
-        <td colspan="2" align="center">返回</td>
+        <td colspan="2" align="center"><input type="button" name="" id=""></td>
+        <td colspan="2" align="center"><a href="${pageContext.request.contextPath}/admin/"></a>返回</td>
     </tr>
+    <tr><input type="datetime" name="interviewTime"/>  <input id="sub" type="submit"></tr>
 </table>
-
+</form>
 </body>
 </html>

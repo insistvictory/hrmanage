@@ -13,7 +13,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script type="text/javascript">
         $(function () {
-
             $("#first").blur(function(){
                 var deptName = $(this).val();
                 $("#second").empty()
@@ -30,6 +29,11 @@
                         $(str).appendTo("#second")
                     }
                 })
+            })
+            $(":submit").click(function () {
+                if ($("#num").val()==""){
+                    return false;
+                }
             })
         })
     </script>
@@ -54,7 +58,7 @@
         </tr>
         <tr>
             <td>年龄</td>
-            <td><input type="text" name="age" value="${requestScope.resume.age}"></td>
+            <td><input id="num" type="number" name="age" value="${requestScope.resume.age}"></td>
             <td>学历</td>
             <td>
                 <select name="education">

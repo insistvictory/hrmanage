@@ -9,5 +9,7 @@ import java.util.List;
  */
 public interface RecruitmentInfoService {
     List<RecruitmentInfo> findAllRecruitInfos();
+
+    RecruitmentInfo findRecruitInfoById(Integer id);
 }
 

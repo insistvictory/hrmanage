@@ -41,9 +41,7 @@ public class UserHandler {
     @RequestMapping("findUserByNameAndPassword")
     public String findUserByNameAndPassword(String name, String password, HttpSession session){
         User user=userService.findUserByNameAndPassword(name,password);
-        List<RecruitmentInfo> recruitInfos=recruitmentInfoService.findAllRecruitInfos();
         if (user!=null){
-            session.setAttribute("recruitInfos",recruitInfos);
             session.setAttribute("user",user);
             return "user/show";
         }else {
@@ -161,5 +159,38 @@ public class UserHandler {
         }else {
             return "show";
         }
+    }
+
+    /**
+     * 查看招聘信息
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping("lookAtRecruitInfo")
+    public String lookAtRecruitInfo(Integer id,Model model,HttpSession session){
+        List<RecruitmentInfo> recruitInfos=recruitmentInfoService.findAllRecruitInfos();
+        Resume resume=resumeService.findResumeByUid(id);
+        model.addAttribute("recruitInfos",recruitInfos);
+        session.setAttribute("resume",resume);
+        return "user/recruit";
+    }
+
+    /**
+     * 查看具体职位的招聘信息
+     * @param id
+     * @return
+     */
+    @RequestMapping("findRecruitInfo")
+    public String findRecruitInfo(Integer id,Model model){
+        RecruitmentInfo recruitInfo=recruitmentInfoService.findRecruitInfoById(id);
+        model.addAttribute(recruitInfo);
+        return "user/recruitinfo";
+    }
+
+    @RequestMapping("deliver")
+    public String deliver(){
+        return null;
+        //ToDo
     }
 }

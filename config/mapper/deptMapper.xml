@@ -6,7 +6,7 @@
 		SELECT * from dept;
 	</select>
 	<select id="queryDeptByName" resultType="Dept">
-		SELECT * from dept where name=#{name};
+		SELECT * from dept where name=#{n	ame};
 	</select>
 	<insert id="addDept" parameterType="Dept">
 		insert into dept(name,create_time) values(#{name},#{createTime});

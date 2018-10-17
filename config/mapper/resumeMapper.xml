@@ -6,7 +6,7 @@
 		SELECT *from resume  where uid=#{uid};
 	</select>
 	<select id="queryResumeById" resultType="Resume">
-		SELECT *from resume  where uid=#{uid};
+		SELECT *from resume  where id=#{uid};
 	</select>
 	<insert id="addResume" parameterType="Resume">
 		insert into resume (uid,name,gender,age,education,tel,email,dept,job,political_status,last_job,experience,salary_hope,hobby)

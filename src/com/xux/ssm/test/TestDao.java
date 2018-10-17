@@ -52,6 +52,12 @@ public class TestDao {
 		System.out.println(resume);
 	}
 	@Test
+	public void testQueryResumeById(){
+		Integer id=1;
+		Resume resume=resumeDao.queryResumeById(1);
+		System.out.println(resume);
+	}
+	@Test
 	public void testQueryAllDepts(){
 		System.out.println(deptDao.queryAllDepts());
 	}
@@ -147,5 +153,9 @@ public class TestDao {
 	@Test
 	public void testQueryRecruits(){
 		System.out.println(recruitmentInfoDao.queryAllRecruitInfos());
+	}
+	@Test
+	public void testQueryRecruitById(){
+		System.out.println(recruitmentInfoDao.queryRecruitInfoById(2));
 	}
 }
