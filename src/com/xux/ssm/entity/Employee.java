@@ -7,8 +7,8 @@ import java.util.Date;
  */
 public class Employee {
     private Integer id;
+    private Integer uid;
     private String name;
-    private String password;
     private String gender;
     private int age;
     private String  education;
@@ -19,7 +19,7 @@ public class Employee {
     private String politicalStatus;
     private Date entryTime;
     private String hobby;
-
+    private String nowStatus;
     public Employee() {
     }
 
@@ -31,20 +31,20 @@ public class Employee {
         this.id = id;
     }
 
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getGender() {
@@ -127,12 +127,20 @@ public class Employee {
         this.hobby = hobby;
     }
 
+    public String getNowStatus() {
+        return nowStatus;
+    }
+
+    public void setNowStatus(String nowStatus) {
+        this.nowStatus = nowStatus;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
+                ", uid=" + uid +
                 ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
                 ", education='" + education + '\'' +
@@ -143,6 +151,7 @@ public class Employee {
                 ", politicalStatus='" + politicalStatus + '\'' +
                 ", entryTime=" + entryTime +
                 ", hobby='" + hobby + '\'' +
+                ", nowStatus='" + nowStatus + '\'' +
                 '}';
     }
 }

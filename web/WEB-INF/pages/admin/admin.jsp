@@ -18,11 +18,9 @@
 
         <a href="admin/lookApplications">招聘管理</a>
         <a href="admin/lookDepts">部门管理</a>
-    部门管理
-    职位管理
-    员工管理
+        <a href="admin/lookAllEmployees">员工管理</a>\
+        <a href="admin/trainManage">培训管理</a>
     薪资管理
-    培训管理
     奖惩管理
     考勤管理
 </body>

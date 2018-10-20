@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface InterviewService {
 
-  Interview findInterviewByUid(Integer id);
+  Interview findInterviewByApplyId(Integer id);
 }

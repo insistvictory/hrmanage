@@ -24,6 +24,7 @@
                     data:{"dName":deptName},
                     success:function(data){
                         $.each(data,function(idx,item){
+
                             str+="<option>"+item.name+"</option>"
                         });
                         $(str).appendTo("#second")
@@ -107,7 +108,7 @@
                 <select id="second" name="job">
                     <c:forEach items="${requestScope.jobs}" var="job">
                         <c:if test="${requestScope.resume.job==job.name}">
-                            <option>${job.name}</option>
+                            <option selected="selected">${job.name}</option>
                         </c:if>
                         <c:if test="${requestScope.resume.job!=job.name}">
                             <option>${job.name}</option>
@@ -152,7 +153,7 @@
         </tr>
     </table>
 </form>
-<a id="href" href="#">提交</a>
+<a id="href" href="#">投递</a>
 
 </body>
 </html>

@@ -40,4 +40,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void deleteApplicationById(Integer id) {
         applicationDao.deleteApplicationById(id);
     }
+
+    @Override
+    public Application queryApplicationByResumeId(Integer id) {
+        return applicationDao.queryApplicationByResumeId(id);
+    }
 }

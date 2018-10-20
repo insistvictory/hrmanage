@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>游客登录界面</title>
+    <title>用户登录界面</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <style type="text/css">
         body{

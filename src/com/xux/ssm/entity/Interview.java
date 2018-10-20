@@ -8,7 +8,7 @@ import java.util.Date;
 public class Interview {
     private Integer id;
     private Integer applyId;
-    private String dmanager;
+    private String readStatus;
     private Date interviewTime;
     private String hire;
 
@@ -31,12 +31,12 @@ public class Interview {
         this.applyId = applyId;
     }
 
-    public String getDmanager() {
-        return dmanager;
+    public String getReadStatus() {
+        return readStatus;
     }
 
-    public void setDmanager(String dmanager) {
-        this.dmanager = dmanager;
+    public void setReadStatus(String readStatus) {
+        this.readStatus = readStatus;
     }
 
     public Date getInterviewTime() {
@@ -61,7 +61,7 @@ public class Interview {
         return "Interview{" +
                 "id=" + id +
                 ", applyId=" + applyId +
-                ", dmanager='" + dmanager + '\'' +
+                ", readStatus='" + readStatus + '\'' +
                 ", interviewTime=" + interviewTime +
                 ", hire='" + hire + '\'' +
                 '}';

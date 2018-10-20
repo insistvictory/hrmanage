@@ -28,9 +28,8 @@
                             $a.parent().parent().remove();
                         }
                     })
-                }else {
-                    return false;
                 }
+                return false;
             })
         })
     </script>

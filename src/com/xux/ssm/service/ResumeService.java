@@ -12,4 +12,6 @@ public interface ResumeService {
     void saveResume(Resume resume);
 
     void updateResume(Resume resume);
+
+    Resume queryResumeByUid(Integer id);
 }

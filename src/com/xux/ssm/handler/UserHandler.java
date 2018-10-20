@@ -47,9 +47,24 @@ public class UserHandler {
     public String findUserByNameAndPassword(String name, String password, HttpSession session){
         User user=userService.findUserByNameAndPassword(name,password);
         if (user!=null){
-            Interview interview=interviewService.findInterviewByUid(user.getId());
-            session.setAttribute("user",user);
-            return "user/show";
+            if (user.getType()==4){
+                session.setAttribute("user",user);
+                Resume resume=resumeService.queryResumeByUid(user.getId());
+                if(resume!=null){
+                    Application application=applicationService.queryApplicationByResumeId(resume.getId());
+                    if (application!=null){
+                        Interview interview=interviewService.findInterviewByApplyId(application.getId());
+                        session.setAttribute("interview",interview);
+                        session.setAttribute("application",application);
+                        System.out.println(interview);
+                    }
+                }
+                return "user/show";
+            }else if(user.getType()==1){
+                return "admin/admin";
+            }else {
+                return null;
+            }
         }else {
             return "redirect:/login.jsp";
         }
@@ -83,7 +98,6 @@ public class UserHandler {
         Dept dept=deptService.findDeptByName(dName);
         List<Job> jobs= jobService.findJobsByDeptId(dept.getId());
         String jsonJobs= JSONArray.toJSONString(jobs);
-        System.out.println(jsonJobs);
         return jsonJobs;
     }
 

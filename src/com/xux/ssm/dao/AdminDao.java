@@ -8,5 +8,4 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface AdminDao {
 
-    Admin findAdminByNameAndPassword(@Param("name")String name, @Param("password")String password);
 }

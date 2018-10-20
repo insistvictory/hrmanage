@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xux.ssm.dao.EmployeeDao">
-
+	<select id="queryAllEmployee" resultType="Employee">
+		SELECT *FROM employee ;
+	</select>
 	<select id="queryEmployeeById" resultType="Employee">
 		SELECT *from employee  where id=#{id};
 	</select>
-
+	<select id="queryEmployeeByDeptName" resultType="Employee">
+	SELECT *from employee  where dept=#{name};
+	</select>
+	<select id="queryEmployeeByJobName" resultType="Employee">
+		SELECT *from employee  where job=#{name};
+	</select>
+	<update id="updateEmployeeById">
+		UPDATE employee SET dept=#{dept},job=#{job} WHERE id=#{id};
+	</update>
 </mapper>
 
 

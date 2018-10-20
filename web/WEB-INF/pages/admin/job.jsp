@@ -19,15 +19,15 @@
                 var $a = $(this);
                 var $td = $(this).parent().parent().children();
                 var name=$td[0].innerHTML;
-                var url = "${pageContext.request.contextPath}/admin/deleteDeptByName";
+                var url = "${pageContext.request.contextPath}/admin/deleteJobByName";
                 var args = {"name":name};
-                var flag=confirm("你确定要删除"+name+"吗？")
+                var flag=confirm("你确定要删除"+name+"职位吗？")
                 if(flag){
                     $.post(url, args, function (data) {
                         if (data =="ok") {
                             $a.parent().parent().remove();
                         }else {
-                            alert("该部门还有员工不能删除");
+                            alert("该职位还有员工不能删除");
                         }
                     })
                 }
@@ -40,21 +40,17 @@
 <div>
         <table>
             <tr>
-                <td>部门</td>
                 <td>职位</td>
                 <td>删除<td>
-                <td>修改</td>
             </tr>
-            <c:forEach items="${requestScope.depts}" var="dept">
+            <c:forEach items="${requestScope.jobs}" var="job">
                 <tr>
-                    <td>${dept.name}</td>
-                    <td><a href="admin/findJobsByDeptName?deptName=${dept.name}"> 职位</a></td>
+                    <td>${job.name}</td>
                     <td><a href="#" class="del">delete</a></td>
-                    <td><a href="admin/deptMiddle?flag=edit&deptName=${dept.name}">edit</a></td>
                 </tr>
             </c:forEach>
             <tr>
-                <td colspan="4"><a href="admin/deptMiddle?flag=add">add</a></td>
+                <td colspan="2"><a href="admin/">add</a></td>
             </tr>
         </table>
 </div>

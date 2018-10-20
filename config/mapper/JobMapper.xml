@@ -18,6 +18,9 @@
 	<select id="queryJobsByDeptId" resultType="Job">
 		select * from job where dept_id=#{deptId}
 	</select>
+	<select id="queryJobsByDeptName" resultType="Job">
+		select * from job where dept_id=#{deptId}
+	</select>
 
 </mapper>
 

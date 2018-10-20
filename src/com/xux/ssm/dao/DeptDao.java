@@ -13,4 +13,5 @@ public interface DeptDao {
     void deleteDeptById(Integer id);
     void updateDept(Dept dept);
     Dept queryDeptByName(String dName);
+
 }

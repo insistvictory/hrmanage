@@ -7,6 +7,7 @@ public class User {
     private Integer id;
     private String name;
     private String password;
+    private Integer type;
 
     public User() {
     }
@@ -35,12 +36,21 @@ public class User {
         this.password = password;
     }
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
-        return "User2{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", type=" + type +
                 '}';
     }
 }

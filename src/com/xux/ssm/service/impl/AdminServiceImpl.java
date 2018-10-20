@@ -16,22 +16,18 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private ResumeDao resumeDao;
     @Autowired
-    private AdminDao adminDao;
-    @Autowired
     private DeptDao deptDao;
     @Autowired
     private JobDao jobDao;
     @Autowired
     private InterviewDao interviewDao;
+    @Autowired
+    private EmployeeDao employeeDao;
     @Override
     public Resume searchDelivererDetailByDid(Integer did) {
         return resumeDao.queryResumeById(did);
     }
 
-    @Override
-    public Admin findAdminByNameAndPassword(String name, String password) {
-        return adminDao.findAdminByNameAndPassword(name,password);
-    }
 
     @Override
     public List<Dept> lookDepts() {
@@ -46,5 +42,25 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void addInterview(Interview interview) {
         interviewDao.addInterview(interview);
+    }
+
+    @Override
+    public List<Job> findJobsByDeptId(Integer id) {
+        return jobDao.queryJobsByDeptId(id);
+    }
+
+    @Override
+    public List<Employee> findAllEmployees() {
+        return employeeDao.queryAllEmployee();
+    }
+
+    @Override
+    public Employee findEmployeeById(Integer id) {
+        return employeeDao.queryEmployeeById(id);
+    }
+
+    @Override
+    public void updateEmployeeById(Integer id, String dept, String job) {
+        employeeDao.updateEmployeeById(id,dept,job);
     }
 }

@@ -14,15 +14,16 @@
     <script type="text/javascript">
         $(function () {
             $("#flag").hide();
-            $("#butt").click(function () {
-                $("#flag").show;
+            $("#hf").click(function () {
+                $("#flag").show();
+                return false;
             })
         })
     </script>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/admin/interviewAdd" method="post">
-    <input type="hidden" name="applyId" value="${sessionScope.aid}">待改
+    <input type="hidden" name="applyId" value="${sessionScope.apid}">
     <table border="1" cellpadding="5px" cellspacing="0">
         <tr>
             <td colspan="4" align="center">简历</td>
@@ -76,10 +77,17 @@
             <td><input type="text" name="hobby" value="${sessionScope.resume.hobby}"></td>
         </tr>
         <tr>
-            <td colspan="2" align="center"><button id="butt">面试</button></td>
-            <td colspan="2" align="center"><a href="${pageContext.request.contextPath}/admin/middle">返回</a></td>
+            <td colspan="2" align="center"><a id="hf" href="#">面试</a></td>
+            <td colspan="2" align="center"><a href="${pageContext.request.contextPath}/admin/lookApplications">返回</a></td>
         </tr>
-        <tr id="flag"><td colspan="4"><input type="date" name="interviewTime"/>  <input  type="submit" value="确认"></td></tr>
+        <tr id="flag">
+            <td colspan="2">
+                <input type="date" name="interviewTime"/>
+            </td>
+            <td colspan="2">
+                <input  type="submit" value="确认">
+            </td>
+        </tr>
     </table>
 </form>
 </body>

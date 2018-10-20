@@ -10,11 +10,18 @@ import java.util.List;
 public interface AdminService {
     Resume searchDelivererDetailByDid(Integer did);
 
-    Admin findAdminByNameAndPassword(String name, String password);
-
     List<Dept> lookDepts();
 
     List<Job> findAllJobs();
 
     void addInterview(Interview interview);
+
+
+    List<Job> findJobsByDeptId(Integer id);
+
+    List<Employee> findAllEmployees();
+
+    Employee findEmployeeById(Integer id);
+
+    void updateEmployeeById(Integer id, String dept, String job);
 }

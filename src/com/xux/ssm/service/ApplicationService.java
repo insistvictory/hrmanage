@@ -19,4 +19,6 @@ public interface ApplicationService {
     void updateApplication(Application application);
 
     void deleteApplicationById(Integer id);
+
+    Application queryApplicationByResumeId(Integer id);
 }

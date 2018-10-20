@@ -21,6 +21,8 @@ public class TestOtherDao {
 	private ApplicationDao applicationDao;
   	@Autowired
 	private InterviewDao interviewDao;
+  	@Autowired
+	private EmployeeDao employeeDao;
   	@Test
 	public void testQueryAllApplications(){
 		System.out.println(applicationDao.queryAllApplications());
@@ -46,5 +48,17 @@ public class TestOtherDao {
 	@Test
 	public void testQueryInterviewByApplyId(){
 		System.out.println(interviewDao.queryInterviewByApplyId(1));
+	}
+	@Test
+	public void testQueryEmployeeByDeptName(){
+		System.out.println(employeeDao.queryEmployeeByDeptName("人事部"));
+	}
+	@Test
+	public void testQueryAllEmployee(){
+		System.out.println(employeeDao.queryAllEmployee());
+	}
+	@Test
+	public void testUpdateEmployeeById(){
+		employeeDao.updateEmployeeById(1,"人事部","人事部主管");
 	}
 }

@@ -24,10 +24,7 @@ public class InterviewServiceImpl implements InterviewService{
     @Autowired
     private ResumeDao resumeDao;
     @Override
-    public Interview findInterviewByUid(Integer id) {
-        Resume resume=resumeDao.queryResumeByUid(id);
-        Application application=applicationDao.queryApplicationByResumeId(resume.getId());
-        return interviewDao.queryInterviewByApplyId(application.getId());
-
+    public Interview findInterviewByApplyId(Integer id) {
+        return interviewDao.queryInterviewByApplyId(id);
     }
 }
