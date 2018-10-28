@@ -63,13 +63,35 @@ public class UserHandler {
             }else if(user.getType()==1){
                 return "admin/admin";
             }else {
-                return null;
+                session.setAttribute("user2",user);
+                return "employee/employee";
             }
         }else {
             return "redirect:/login.jsp";
         }
     }
 
+    /**
+     * 中转站
+     * @return
+     */
+    @RequestMapping("backTurn")
+    public String backTurn(){
+        return "user/show";
+    }
+
+    /**
+     * 更改面试邀请读取状态
+     * @param readStatus
+     * @param id
+     * @return
+     */
+    @RequestMapping("modifyInterview")
+    @ResponseBody
+    public String modifyInterview(String readStatus,Integer id){
+        interviewService.modifyInterviewReadStatus(readStatus,id);
+        return "ok";
+    }
     /**
      * 保存简历（添加，修改）
      * @param resume
@@ -78,6 +100,8 @@ public class UserHandler {
     @RequestMapping("saveResume")
     public String saveResume(Resume resume){
         Resume rsme=resumeService.findResumeByUid(resume.getUid());
+        System.out.println(rsme);
+        System.out.println(resume);
         if (rsme==null){
             resumeService.saveResume(resume);
             return "user/show";
@@ -108,6 +132,7 @@ public class UserHandler {
      */
     @RequestMapping("addUser")
     public String addUser(User user){
+        user.setType(4);
         userService.addUser(user);
         return "redirect:/login.jsp";
     }
@@ -137,8 +162,8 @@ public class UserHandler {
      */
     @RequestMapping("validatePassword")
     @ResponseBody
-    public String validatePassword(String password){
-        User user=userService.validatePassword(password);
+    public String validatePassword(String password,Integer id){
+        User user=userService.validatePassword(password,id);
         String msg="";
         if (user==null){
             msg="error";
@@ -183,17 +208,14 @@ public class UserHandler {
 
     /**
      * 查看招聘信息
-     * @param id
      * @param model
      * @return
      */
     @RequestMapping("lookAtRecruitInfo")
-    public String lookAtRecruitInfo(Integer id,Model model,HttpSession session){
+    public String lookAtRecruitInfo(Model model){
         List<RecruitmentInfo> recruitInfos=recruitmentInfoService.findAllRecruitInfos();
-        Resume resume=resumeService.findResumeByUid(id);
-        System.out.println(resume);
         model.addAttribute("recruitInfos",recruitInfos);
-        session.setAttribute("resume",resume);
+        System.out.println(recruitInfos+"@@@@");
         return "user/recruit";
     }
 
@@ -209,6 +231,11 @@ public class UserHandler {
         return "user/recruitinfo";
     }
 
+    /**
+     * 投递简历
+     * @param application
+     * @return
+     */
     @RequestMapping("deliver")
     @ResponseBody
     public String deliver(Application application){

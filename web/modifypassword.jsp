@@ -10,13 +10,21 @@
 <html>
 <head>
     <title>修改密码</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/6.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#original").blur(function () {
                 $("#spn1").empty()
                 var url="${pageContext.request.contextPath}/user/validatePassword";
-                var ags={password:$(this).val()};
+                var ags={password:$(this).val(),id:${param.id}};
                 $.post(url,ags,function (data) {
                     if (data=="error"){
                         $("#spn1").text("密码错误")
@@ -58,6 +66,7 @@
     </script>
 </head>
 <body>
+<div align="center"style="margin-top:100px">
 <form action="${pageContext.request.contextPath}/user/updatePassword" method="post">
     <table>
         <input type="hidden" name="id" value="${param.id}">
@@ -71,10 +80,11 @@
             <td>密码确认:<input id="checkpsd" type="text" name="newPassword"><span id="spn2"></span></td>
         </tr>
         <tr>
-            <td><input id="sub" type="submit" value="确认修改"></td>
+            <td align="center"><input id="sub" type="submit" value="确认修改"></td>
         </tr>
     </table>
+    <a href="${pageContext.request.contextPath}/user/backTurn">返回</a>
 </form>
-
+</div>
 </body>
 </html>

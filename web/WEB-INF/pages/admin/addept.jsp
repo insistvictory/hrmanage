@@ -9,12 +9,20 @@
 <html>
 <head>
     <title>添加部门</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script>
         $(function () {
             $("#btt").click(function () {
                 var url = "${pageContext.request.contextPath}/admin/findDeptByName";
-                var ags={name:$(":text").val()}
+                var args={name:$(":text").val()}
                 $.post(url, args, function (data) {
                     if (data =="ok") {
                        alert("创建成功");
@@ -22,13 +30,14 @@
                         alert("此部门已存在")
                     }
                 })
+                return false;
             })
         })
     </script>
 </head>
 <body>
     部门名称:<input type="text" name="name">
-    <input id="btt" type="button" value="新建">
+    <button id="btt"><a href="#">新建</a> </button>
     <button><a href="${pageContext.request.contextPath}/admin/lookDepts">返回</a></button>
 </body>
 </html>

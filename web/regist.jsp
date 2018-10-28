@@ -13,7 +13,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <style type="text/css">
         body{
-            background-image: url("${pageContext.request.contextPath}/img/2.jpg");
+            background-image: url("${pageContext.request.contextPath}/img/3.jpg");
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-attachment: fixed;
@@ -24,17 +24,16 @@
             $("#lname").blur(function () {
                 if ($(this).val()==""){
                     $("#spn1").text("用户名不能为空")
-                    $("#sub").attr("disabled",true);
                 }else {
                     var url="${pageContext.request.contextPath}/user/validateName";
                     var ags={name:$(this).val()};
                     $.post(url,ags,function (data) {
                         if (data=="ok"){
                             $("#spn1").text("用户名可用")
-                            $("#sub").attr("disabled",false)
+
                         }else {
                             $("#spn1").text("用户名已存在")
-                            $("#sub").attr("disabled",true);
+
                         }
                     })
                 }
@@ -42,19 +41,30 @@
             $("#psd1").blur(function () {
                 if($(this).val()=="") {
                     $("#spn").text("密码不能为空");
-                    $("#sub").attr("disabled", true);
                 }else {
                     $("#spn").empty();
-                    $("#sub").attr("disabled", false);
                 }
             })
             $("#psd2").blur(function () {
+                $("#sp").empty();
                 if($(this).val()!=$("#psd1").val()){
                     $("#sp").text("密码不匹配");
-                    $("#sub").attr("disabled",true);
-                }else {
-                    $("#sp").empty();
-                    $("#sub").attr("disabled",false);
+                }
+            })
+            $("#sub").click(function () {
+                if($("#lname").val()==""){
+                    $("#spn1").text("用户名不能为空");
+                    return false;
+                }
+                if($("#psd1").val()==""){
+                    $("#spn").text("密码不能为空");
+                    return false;
+                }
+                if ($("#sp").text()=="密码不匹配"){
+                    return false;
+                }
+                if ($("#spn1").text()=="用户名已存在"){
+                    return false;
                 }
             })
         })
@@ -62,13 +72,33 @@
 
 </head>
 <body>
+<div align="center"style="margin-top:100px">
 <form  action="${pageContext.request.contextPath}/user/addUser" method="post">
-    <h3>注册</h3>
-    用户名:<input id="lname" type="text" name="name"><span id="spn1"></span><br>
-    密码：<input id="psd1" type="text" name="password"><span id="spn"></span><br>
-    密码确认:<input id="psd2" type="text" name="password2"><span id="sp"></span><br>
-    <input id="sub" type="submit" value="注册"><br>
-   <%-- <input type="button" value="取消"><br>--%>
+    <table>
+        <tr>
+            <td colspan="3" align="center"><h3>注册</h3></td>
+        </tr>
+        <tr>
+            <td>用户名:</td>
+            <td><input id="lname" type="text" name="name"></td>
+            <td><span id="spn1"></span></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input id="psd1" type="text" name="password"></td>
+            <td><span id="spn"></span></td>
+        </tr>
+        <tr>
+            <td>密码确认:</td>
+            <td><input id="psd2" type="text" name="password2"></td>
+            <td><span id="sp"></span></td>
+        </tr>
+        <tr>
+            <td colspan="3"><input id="sub" type="submit" value="注册"></td>
+            <td><a href="${pageContext.request.contextPath}/login.jsp">返回</a></td>
+        </tr>
+    </table>
 </form>
+</div>
 </body>
 </html>

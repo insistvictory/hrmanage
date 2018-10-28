@@ -11,30 +11,41 @@
 <html>
 <head>
     <title>游客界面</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#dv").hide();
-
-            if(${!empty sessionScope.interview}){
+            if(${sessionScope.interview.readStatus=="未查看"}){
                 alert("你有一份面试通知，详情请在反馈中查看")
             }
-
             $("#btt").click(function () {
                 $("#dv").show();
+                if (${sessionScope.interview.readStatus=="未查看"})
+                var url="${pageContext.request.contextPath}/user/modifyInterview";
+                var ags={readStatus:"已查看",id:${sessionScope.interview.id}};
+                $.post(url,ags,function (data) {
+
+                })
                 return false;
             })
         })
     </script>
 </head>
 <body>
-
 当前用户:${sessionScope.user.name}<br>
 <a href="#" id="btt">反馈</a>
 <a href="${pageContext.request.contextPath}/user/lookResume?flag=a&id=${sessionScope.user.id}">查看简历</a>
 <a href="../../../modifypassword.jsp?id=${sessionScope.user.id}">修改密码</a>
 <a href="${pageContext.request.contextPath}/login.jsp">退出</a>
-<a href="${pageContext.request.contextPath}/user/lookAtRecruitInfo?id=${sessionScope.user.id}">查看招聘信息</a>
+<a href="${pageContext.request.contextPath}/user/lookAtRecruitInfo">查看招聘信息</a>
 <hr/>
 <div id="dv">
     <c:if test="${!empty sessionScope.interview}">

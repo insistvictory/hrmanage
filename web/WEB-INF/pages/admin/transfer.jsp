@@ -10,6 +10,14 @@
 <html>
 <head>
     <title>人事调动</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script>
         $(function () {

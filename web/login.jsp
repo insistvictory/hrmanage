@@ -13,7 +13,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <style type="text/css">
         body{
-            background-image: url("${pageContext.request.contextPath}/img/1.png");
+            background-image: url("${pageContext.request.contextPath}/img/4.jpg");
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-attachment: fixed;

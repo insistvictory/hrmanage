@@ -12,6 +12,14 @@
 <head>
     <base href="${pageContext.request.contextPath}/">
     <title>部门管理</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script>
         $(function () {
@@ -37,20 +45,22 @@
     </script>
 </head>
 <body>
-<div>
-        <table>
+<div align="center">
+        <table border="1px" cellpadding="20px" cellspacing="0px">
             <tr>
                 <td>职位</td>
-                <td>删除<td>
+                <td>删除</td>
+                <td>修改</td>
             </tr>
             <c:forEach items="${requestScope.jobs}" var="job">
                 <tr>
                     <td>${job.name}</td>
                     <td><a href="#" class="del">delete</a></td>
+                    <td><a href="admin/lookJobDetail?id=${job.id}" class="eidt">edit</a></td>
                 </tr>
             </c:forEach>
             <tr>
-                <td colspan="2"><a href="admin/">add</a></td>
+                <td colspan="3"><a href="admin/addJobMiddle?deptId=${requestScope.deptId}">add</a></td>
             </tr>
         </table>
 </div>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.ssm.dao.TrainDao">
+	<select id="queryAllTrains" resultType="Train">
+		SELECT * from train;
+	</select>
+	<select id="queryTrainById" resultType="Train">
+		SELECT * from train WHERE id=#{id};
+	</select>
+	<insert id="addTrain">
+		insert into train(train_context,train_time,train_dept,sum_time) values(#{trainContext},#{trainTime},#{trainDept},#{sumTime});
+	</insert>
+	<update id="updateTrain">
+		update train set train_context=#{trainContext},train_time=#{trainTime},train_dept=#{trainDept},sum_time=#{sumTime} where id=#{id};
+	</update>
+	<delete id="deleteTrainById">
+		DELETE from train WHERE id=#{id};
+	</delete>
+	<select id="queryTrainsByDeptName" resultType="Train">
+		SELECT * from train WHERE train_dept=#{dept};
+	</select>
+</mapper>
+
+
+
+
+
+
+		

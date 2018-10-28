@@ -12,6 +12,14 @@
 <head>
     <base href="${pageContext.request.contextPath}/">
     <title>应聘消息</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script>
         $(function () {
@@ -26,6 +34,8 @@
                     $.post(url, args, function (data) {
                         if (data =="ok") {
                             $a.parent().parent().remove();
+                        }else {
+                            alert("邀请面试记录生成，此申请暂不能删");
                         }
                     })
                 }
@@ -55,6 +65,7 @@
                     </tr>
                 </c:forEach>
         </table>
+        <a href="admin/middle">返回</a>
     </div>
 </body>
 </html>

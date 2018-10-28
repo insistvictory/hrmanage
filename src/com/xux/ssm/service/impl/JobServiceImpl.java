@@ -24,4 +24,29 @@ private JobDao jobDao;
     public List<Job> findJobsByDeptId(Integer id) {
         return jobDao.queryJobsByDeptId(id);
     }
+
+    @Override
+    public Job findJobByName(String name) {
+        return jobDao.queryJobByName(name);
+    }
+
+    @Override
+    public void addJob(Job job) {
+        jobDao.addJob(job);
+    }
+
+    @Override
+    public void updateJob(Job job) {
+        jobDao.updateJob(job);
+    }
+
+    @Override
+    public Job findJobById(Integer id) {
+        return jobDao.queryJobById(id);
+    }
+
+    @Override
+    public void updateJobByIdAndName(Integer id, String name) {
+        jobDao.updateJobByIdAndName(id,name);
+    }
 }

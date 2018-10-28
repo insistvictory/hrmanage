@@ -50,4 +50,9 @@ public class DeptServiceImpl implements DeptService{
     public void editDept(Dept dept) {
         deptDao.updateDept(dept);
     }
+
+    @Override
+    public void deleteDeptByName(String name) {
+        deptDao.deleteDeptByName(name);
+    }
 }

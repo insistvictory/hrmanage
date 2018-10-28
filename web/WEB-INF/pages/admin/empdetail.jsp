@@ -11,6 +11,14 @@
 <html>
 <head>
     <title>Title</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -21,12 +29,10 @@
             })
             $("#sub").click(function () {
                 var url="${pageContext.request.contextPath}/admin/reward";
-                var ags={cause:$("#cause").val(),money:$("#money").val(),time:$("#time").val(),id:${requestScope.employee.id}};
+                var ags={cause:$("#cause").val(),money:$("#money").val(),rpTime:$("#time").val(),eid:${requestScope.employee.id}};
                 $.post(url,ags,function (data) {
                     if (data=="yes"){
-
-                    }else {
-
+                        alert("赏罚成功!");
                     }
                 })
                 return false;
@@ -64,23 +70,23 @@
          <td>${requestScope.employee.dept}${requestScope.employee.job}</td>
      </tr>
  </table>
- <a href="#" id="aa">奖赏</a>
+ <a href="#" id="aa">赏罚</a>
  <a href="${pageContext.request.contextPath}/admin/lookAllEmployees">返回</a>
 <div id="dd">
     <table>
         <tr>
-            <td colspan="2">奖赏</td></tr>
+            <td colspan="2">赏罚</td></tr>
         <tr>
-            <td>奖赏原因:</td>
-            <td id="cause"><input type="text"></td>
+            <td>赏罚原因:</td>
+            <td><input type="text" id="cause"></td>
         </tr>
         <tr>
-            <td>奖金:</td>
-            <td id="money"><input type="number"></td>
+            <td>赏罚金:</td>
+            <td><input type="number" id="money"></td>
         </tr>
         <tr>
             <td>时间:</td>
-            <td id="time"><input type="date"></td>
+            <td><input type="date" id="time"></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="确认" id="sub"></td>

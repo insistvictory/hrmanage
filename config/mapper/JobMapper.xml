@@ -21,7 +21,18 @@
 	<select id="queryJobsByDeptName" resultType="Job">
 		select * from job where dept_id=#{deptId}
 	</select>
-
+	<select id="queryJobByName" resultType="Job">
+		select * from job where name=#{name}
+	</select>
+	<select id="queryJobById" resultType="Job">
+		select * from job where id=#{id};
+	</select>
+	<update id="updateJobByIdAndName" >
+		update job SET name=#{name} where id=#{id}
+	</update>
+	<delete id="deleteJobByName" >
+		delete from job where name=#{name};
+	</delete>
 </mapper>
 
 

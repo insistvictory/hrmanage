@@ -8,9 +8,9 @@ import java.util.Date;
 public class Interview {
     private Integer id;
     private Integer applyId;
-    private String readStatus;
+    private String readStatus;//�鿴״̬
     private Date interviewTime;
-    private String hire;
+    private String hire;//¼��״̬
 
     public Interview() {
     }

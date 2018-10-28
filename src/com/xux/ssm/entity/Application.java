@@ -9,8 +9,8 @@ public class Application {
     private Integer id;
     private Integer resumeId;
     private Date applyTime;
-    private String resumeStatus;
-    private String InterviewStatus;
+    private String resumeStatus;//²é¿´×´Ì¬
+    private String InterviewStatus;//ÃæÊÔ×´Ì¬
 
 
     public Application() {

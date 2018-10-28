@@ -21,4 +21,6 @@ public interface DeptService {
     void addDept(Dept dept);
 
     void editDept(Dept dept);
+
+    void deleteDeptByName(String name);
 }

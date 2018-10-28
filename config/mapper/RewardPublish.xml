@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.ssm.dao.RewardPublishDao">
+	<insert id="addRewardPublish">
+		insert into rewarpub(eid,cause,money,rp_time) values(#{eid},#{cause},#{money},#{rpTime});
+	</insert>
+	<select id="queryRewardPublishByEid" resultType="RewardPublish">
+		SELECT *from rewarpub WHERE eid=#{id}
+	</select>
+	<select id="queryRewardPublishes" resultType="RewardPublish">
+		SELECT *FROM rewarpub;
+	</select>
+</mapper>
+
+
+
+
+
+
+		

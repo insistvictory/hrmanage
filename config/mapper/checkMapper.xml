@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.ssm.dao.CheckDao">
+	<insert id="addCheck">
+		insert into checkwork(eid,year,month,day,begin_time,end_time,work_status) VALUES (#{eid},#{year},#{month},#{day},#{beginTime},#{endTime},#{workStatus});
+	</insert>
+	<select id="queryCheckByTimeAndUid" resultType="Check">
+		SELECT *FROM checkwork where eid=#{eid} and year=#{year} and month=#{month} and day=#{date};
+	</select>
+	<update id="updateCheck">
+		UPDATE checkwork SET eid=#{eid},year=#{year},month=#{month},day=#{day},begin_time=#{beginTime},end_time=#{endTime},work_status=#{workStatus} WHERE id=#{id};
+	</update>
+	<select id="queryChecksByYearAndMonthAndEid" resultType="Check">
+		SELECT *FROM checkwork WHERE year=#{i} and month =#{k} and eid=#{eid};
+	</select>
+
+</mapper>
+
+
+
+
+
+
+		

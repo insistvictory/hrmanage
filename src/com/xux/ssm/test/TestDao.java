@@ -33,6 +33,8 @@ public class TestDao {
 	private EmployeeDao employeeDao;
 	@Autowired
 	private RecruitmentInfoDao recruitmentInfoDao;
+	@Autowired
+	private InterviewDao interviewDao;
 	@Test
 	public void testUserDao(){
 		System.out.println(userDao.queryUserByNameAndPassword("aaa","aaa"));
@@ -40,8 +42,9 @@ public class TestDao {
 	@Test
 	public void testInsertUser(){
 		User user=new User();
-		user.setName("ddd");
-		user.setPassword("ddd");
+		user.setName("add");
+		user.setPassword("add");
+		user.setType(4);
 		userDao.insertUser(user);
 
 	}
@@ -95,6 +98,10 @@ public class TestDao {
 		jobDao.addJob(job);
 	}
 	@Test
+	public void testQueryJobByName(){
+		System.out.println(jobDao.queryJobByName("人事部主管"));
+	}
+	@Test
 	public void testJobDel(){
 		jobDao.deleteJobById(1);
 	}
@@ -135,12 +142,16 @@ public class TestDao {
 	}
 	@Test
 	public void testQueryUserByPassword(){
-		System.out.println(userDao.queryUserByPassword("aaa"));
+		System.out.println(userDao.queryUserByPassword("aaa",1));
 	}
 	@Test
 	public void testUpdateResume(){
 		Resume resume=new Resume(1,"ccc","女",19,"本科","32423432","231@123","人事部","人事部主管","团员","大炮","明萌派","4000-6000","game");
 		resumeDao.updateResume(resume);
+	}
+	@Test
+	public void testUpdateInterviewReadStatus(){
+		interviewDao.modifyInterviewReadStatus("未查看",1);
 	}
 	@Test
 	public void testUpdateUserPassword(){

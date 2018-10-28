@@ -7,9 +7,9 @@ import java.util.Date;
  */
 public class Job {
     private Integer id;
-    private Integer deptId;
+    private Integer deptId;//部门id
     private String name;
-    private Date createTime;
+    private Date createTime;//职位创建时间
 
     public Job() {
     }

@@ -7,6 +7,9 @@
 	<select id="queryEmployeeById" resultType="Employee">
 		SELECT *from employee  where id=#{id};
 	</select>
+	<select id="queryEmployeeByUid" resultType="Employee">
+		SELECT *from employee  where uid=#{id};
+	</select>
 	<select id="queryEmployeeByDeptName" resultType="Employee">
 	SELECT *from employee  where dept=#{name};
 	</select>
@@ -16,6 +19,12 @@
 	<update id="updateEmployeeById">
 		UPDATE employee SET dept=#{dept},job=#{job} WHERE id=#{id};
 	</update>
+	<update id="updateEmployee">
+		UPDATE employee SET uid=#{uid},name=#{name},gender=#{gender},age=#{age},education=#{education},tel=#{tel},email=#{email},dept=#{dept},job=#{job},political_status=#{politicalStatus},entry_time=#{entryTime},hobby=#{hobby},now_status=#{nowStatus} where id=#{id};
+	</update>
+	<insert id="insertEmployee">
+		insert into employee(uid,name,gender,age,education,tel,email,dept,job,political_status,entry_time,hobby,now_status) values(#{uid},#{name},#{gender},#{age},#{education},#{tel},#{email},#{dept},#{job},#{politicalStatus},#{entryTime},#{hobby},#{nowStatus})
+	</insert>
 </mapper>
 
 

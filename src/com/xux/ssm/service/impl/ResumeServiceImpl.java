@@ -32,4 +32,9 @@ public class ResumeServiceImpl implements ResumeService {
     public Resume queryResumeByUid(Integer id) {
         return resumeDao.queryResumeByUid(id);
     }
+
+    @Override
+    public Resume findResumeById(Integer resumeId) {
+        return resumeDao.queryResumeById(resumeId);
+    }
 }

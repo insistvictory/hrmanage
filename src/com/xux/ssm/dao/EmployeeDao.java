@@ -24,4 +24,8 @@ public interface EmployeeDao {
     List<Employee> queryEmployeeByJobName(String name);
 
     void updateEmployeeById( @Param("id")Integer id, @Param("dept")String dept,@Param("job")String job);
+
+    Employee queryEmployeeByUid(Integer id);
+
+    void updateEmployee(Employee employee);
 }

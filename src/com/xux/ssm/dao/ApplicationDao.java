@@ -3,7 +3,7 @@ package com.xux.ssm.dao;
 
 
 import com.xux.ssm.entity.Application;
-import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 

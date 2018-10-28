@@ -27,4 +27,20 @@ public class InterviewServiceImpl implements InterviewService{
     public Interview findInterviewByApplyId(Integer id) {
         return interviewDao.queryInterviewByApplyId(id);
     }
+
+    @Override
+    public void modifyInterviewReadStatus(String readStatus, Integer id) {
+        interviewDao.modifyInterviewReadStatus(readStatus,id);
+    }
+
+    @Override
+    public Interview findInterviewById(Integer iid) {
+        return interviewDao.queryInterviewById(iid);
+    }
+
+    @Override
+    public void modifyInterview(Interview interview) {
+        interviewDao.updateInterview(interview);
+    }
+
 }

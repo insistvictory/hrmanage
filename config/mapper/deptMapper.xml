@@ -17,7 +17,12 @@
 	<update id="updateDept" parameterType="Dept">
 		update dept set name=#{name},create_time=#{createTime} where id=#{id}
 	</update>
-
+	<delete id="deleteDeptByName">
+		delete from dept where name=#{name};
+	</delete>
+	<update id="updateDeptByNameAndId">
+		update dept set name=#{name} where id=#{id}
+	</update>
 </mapper>
 
 

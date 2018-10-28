@@ -7,6 +7,18 @@
 	<select id="queryInterviewByApplyId" resultType="Interview">
 		select *from interview where apply_id=#{id};
 	</select>
+	<update id="modifyInterviewReadStatus">
+		UPDATE interview set read_status=#{readStatus} WHERE id=#{id};
+	</update>
+	<select id="queryAllInterviewsByReadStatus" resultType="Interview">
+		select *from interview where read_status=#{string};
+	</select>
+	<select id="queryInterviewById" resultType="Interview">
+		select *from interview where id=#{iid};
+	</select>
+	<update id="updateInterview">
+		UPDATE interview SET apply_id=#{applyId},read_status=#{readStatus},interview_time=#{interviewTime},hire=#{hire} where id=#{id};
+	</update>
 </mapper>
 
 

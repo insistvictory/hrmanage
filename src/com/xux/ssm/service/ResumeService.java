@@ -14,4 +14,6 @@ public interface ResumeService {
     void updateResume(Resume resume);
 
     Resume queryResumeByUid(Integer id);
+
+    Resume findResumeById(Integer resumeId);
 }

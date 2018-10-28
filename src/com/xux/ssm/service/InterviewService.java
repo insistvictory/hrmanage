@@ -2,7 +2,7 @@ package com.xux.ssm.service;
 
 import com.xux.ssm.entity.Interview;
 
-import java.util.List;
+
 
 /**
  * Created by Administrator on 2018/10/17.
@@ -10,4 +10,11 @@ import java.util.List;
 public interface InterviewService {
 
   Interview findInterviewByApplyId(Integer id);
+
+  void modifyInterviewReadStatus(String readStatus, Integer id);
+
+
+    Interview findInterviewById(Integer iid);
+
+  void modifyInterview(Interview interview);
 }

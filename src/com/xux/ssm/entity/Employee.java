@@ -11,15 +11,15 @@ public class Employee {
     private String name;
     private String gender;
     private int age;
-    private String  education;
+    private String  education;//学历
     private String tel;
     private String email;
     private String dept;
     private String job;
-    private String politicalStatus;
+    private String politicalStatus;//政治面貌
     private Date entryTime;
     private String hobby;
-    private String nowStatus;
+    private String nowStatus;//离职、在职
     public Employee() {
     }
 
@@ -153,5 +153,6 @@ public class Employee {
                 ", hobby='" + hobby + '\'' +
                 ", nowStatus='" + nowStatus + '\'' +
                 '}';
+
     }
 }

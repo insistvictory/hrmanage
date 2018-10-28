@@ -9,7 +9,14 @@
 <html>
 <head>
     <title>修改部门信息</title>
-
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/admin/editDept" method="post">

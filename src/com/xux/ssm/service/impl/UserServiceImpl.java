@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User validatePassword(String password) {
-        return userDao.queryUserByPassword(password);
+    public User validatePassword(String password,Integer id) {
+        return userDao.queryUserByPassword(password,id);
     }
 
     @Override
@@ -51,4 +51,11 @@ public class UserServiceImpl implements UserService{
     public Application findApplyByResumeId(Integer resumeId) {
         return applicationDao.queryApplicationByResumeId(resumeId);
     }
+
+    @Override
+    public void updateType(int i, Integer uid) {
+        userDao.updateType(i,uid);
+    }
+
+
 }

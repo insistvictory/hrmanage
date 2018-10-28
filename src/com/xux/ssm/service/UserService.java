@@ -40,7 +40,7 @@ public interface UserService {
      * @param password
      * @return
      */
-    User validatePassword(String password);
+    User validatePassword(String password,Integer id);
 
     /**
      * ĞŞ¸ÄÃÜÂë
@@ -51,5 +51,8 @@ public interface UserService {
 
 
     Application findApplyByResumeId(Integer resumeId);
+
+
+    void updateType(int i, Integer uid);
 }
 

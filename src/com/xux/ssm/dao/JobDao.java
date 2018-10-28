@@ -1,6 +1,7 @@
 package com.xux.ssm.dao;
 
 import com.xux.ssm.entity.Job;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,4 +14,8 @@ public interface JobDao {
     void deleteJobById(Integer id);
     void updateJob(Job job);
     List<Job> queryJobsByDeptId(Integer id);
+    Job queryJobByName(String name);
+    Job queryJobById(Integer id);
+    void updateJobByIdAndName(@Param("id") Integer id, @Param("name") String name);//更具id和职位名字修改
+    void deleteJobByName(String name);
 }

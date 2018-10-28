@@ -40,7 +40,7 @@ public interface UserDao {
      * @param password
      * @return
      */
-    User queryUserByPassword(String password);
+    User queryUserByPassword(@Param("password") String password,@Param("id") Integer id);
 
     /**
      * ÐÞ¸ÄÃÜÂë
@@ -48,4 +48,7 @@ public interface UserDao {
      * @param newPassword
      */
     void updatePassword(@Param("id")Integer id, @Param("newPassword")String newPassword);
+
+
+    void updateType(@Param("i") int i, @Param("uid") Integer uid);
 }

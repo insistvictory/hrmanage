@@ -12,8 +12,8 @@ public class RecruitmentInfo {
     private String address;
     private String salary;
     private String duty;
-    private String requirements;
-    private Date pubdate;
+    private String requirements;//岗位要求
+    private Date pubdate;//发布时间
 
     public RecruitmentInfo() {
     }

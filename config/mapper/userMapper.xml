@@ -12,13 +12,16 @@
 		SELECT *from user where name=#{name}
 	</select>
 	<select id="queryUserByPassword" resultType="User">
-		SELECT *from user where password=#{password}
+		SELECT *from user where password=#{password} AND id=#{id}
 	</select>
 	<insert id="insertUser" parameterType="User">
-		insert into user(name,password) values(#{name},#{password})
+		insert into user(name,password,type) values(#{name},#{password},#{type})
 	</insert>
 	<update id="updatePassword">
 		update user set password=#{newPassword} where id=#{id}
+	</update>
+	<update id="updateType">
+		update user set type=#{i} where id=#{uid}
 	</update>
 </mapper>
 

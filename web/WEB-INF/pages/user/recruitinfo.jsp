@@ -11,6 +11,14 @@
 <html>
 <head>
     <title>招聘职位详细信息</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
  <%--   <script type="text/javascript">
         $(function () {
@@ -41,7 +49,7 @@
 <div>
 
     <input id="hid" type="hidden" value="${requestScope.recruitInfo.rid}">
-    <table>
+    <table border="1px" cellspacing="0px" cellpadding="20px">
         <tr>
            <%-- <td>投！</td>--%>
             <td>公司</td>
@@ -65,6 +73,7 @@
             </tr>
         </c:if>
     </table>
+    <a href="${pageContext.request.contextPath}/user/lookAtRecruitInfo">返回</a>
 </div>
 </body>
 </html>

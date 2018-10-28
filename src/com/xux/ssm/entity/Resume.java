@@ -7,17 +7,17 @@ public class Resume {
     private Integer id;
     private Integer uid;
     private String name;
-    private String gender;
+    private String gender;//性别
     private int age;
-    private String  education;
+    private String  education;//学历
     private String tel;
     private String email;
     private String dept;
     private String job;
-    private String politicalStatus;
+    private String politicalStatus;//政治面貌
     private String lastJob;
     private String experience;
-    private String salaryHope;
+    private String salaryHope;//期望薪资
     private String hobby;
 
     public Resume() {

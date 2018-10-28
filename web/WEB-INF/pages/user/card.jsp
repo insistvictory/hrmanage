@@ -10,6 +10,14 @@
 <html>
 <head>
     <title>简历表</title>
+    <style type="text/css">
+        body{
+            background-image: url("${pageContext.request.contextPath}/img/5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -24,7 +32,6 @@
                     data:{"dName":deptName},
                     success:function(data){
                         $.each(data,function(idx,item){
-
                             str+="<option>"+item.name+"</option>"
                         });
                         $(str).appendTo("#second")
@@ -40,8 +47,9 @@
                 if(${empty requestScope.resume}) {
                     alert("请先创建简历");
                 }else {
+                    var a='${requestScope.resume.id}';
                     var url="${pageContext.request.contextPath}/user/deliver";
-                    var ags={resumeId:${requestScope.resume.id}};
+                    var ags={resumeId:a};
                     $.post(url,ags,function (data) {
                         if (data=="yes"){
                             alert("投递成功");
@@ -54,9 +62,9 @@
             })
         })
     </script>
-
 </head>
 <body>
+<div align="center">
 <form action="${pageContext.request.contextPath}/user/saveResume"method="post">
 
     <table border="1" cellpadding="5px" cellspacing="0">
@@ -154,6 +162,7 @@
     </table>
 </form>
 <a id="href" href="#">投递</a>
+</div>
 
 </body>
 </html>
